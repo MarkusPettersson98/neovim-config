@@ -8,6 +8,8 @@ vim.pack.add {
 	{ src = 'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim' },
 	-- Nice status update
 	{ src = 'https://github.com/j-hui/fidget.nvim' },
+	-- Nice colortheme
+	{ src = 'https://github.com/nyoom-engineering/oxocarbon.nvim' },
 }
 
 
@@ -21,8 +23,10 @@ vim.g.maplocalleader = ' '
 vim.o.number = true
 vim.o.relativenumber = true
 
--- 3. Load plugins
+vim.opt.background = "dark" -- set this to dark or light
+vim.cmd.colorscheme "oxocarbon"
 
+-- 3. Load plugins
 require('mason').setup()
 require('mason-lspconfig').setup()
 require('mason-tool-installer').setup({
