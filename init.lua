@@ -1,4 +1,4 @@
-	-- no-bloat neovim config for everyday dev work.
+-- 0. no-bloat neovim config for everyday dev work.
 vim.pack.add {
 	-- Configure LSPs
 	{ src = 'https://github.com/neovim/nvim-lspconfig' },
@@ -9,6 +9,19 @@ vim.pack.add {
 	-- Nice status update
 	{ src = 'https://github.com/j-hui/fidget.nvim' },
 }
+
+
+-- 1. Remap keys
+-- Set <space> as the leader key
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ' '
+
+-- 2. Set vim options
+-- Show numbers
+vim.o.number = true
+vim.o.relativenumber = true
+
+-- 3. Load plugins
 
 require('mason').setup()
 require('mason-lspconfig').setup()
