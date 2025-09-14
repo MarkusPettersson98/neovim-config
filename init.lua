@@ -9,7 +9,7 @@ vim.pack.add {
 	-- Nice status update
 	{ src = 'https://github.com/j-hui/fidget.nvim' },
 	-- Nice colortheme
-	{ src = 'https://github.com/nyoom-engineering/oxocarbon.nvim' },
+	{ src = 'https://github.com/rose-pine/neovim' },
 }
 
 
@@ -23,10 +23,14 @@ vim.g.maplocalleader = ' '
 vim.o.number = true
 vim.o.relativenumber = true
 
-vim.opt.background = "dark" -- set this to dark or light
-vim.cmd.colorscheme "oxocarbon"
 
--- 3. Load plugins
+-- 3. Set colorscheme
+-- Configure options before setting colorscheme.
+vim.cmd.colorscheme "rose-pine" -- default
+-- vim.cmd.colorscheme "rose-pine-moon" -- darker
+-- vim.cmd.colorscheme "rose-pine-dawn" -- light theme
+
+-- 4. Load plugins
 require('mason').setup()
 require('mason-lspconfig').setup()
 require('mason-tool-installer').setup({
