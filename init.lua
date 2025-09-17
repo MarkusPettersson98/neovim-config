@@ -10,6 +10,10 @@ vim.pack.add {
 	{ src = 'https://github.com/j-hui/fidget.nvim' },
 	-- Nice colortheme
 	{ src = 'https://github.com/rose-pine/neovim' },
+	-- Find, Filter, Preview, Pick.
+	{ src = 'https://github.com/nvim-telescope/telescope.nvim' },
+		-- Telescope dependencies
+		{ src = 'https://github.com/nvim-lua/plenary.nvim' },
 }
 
 
@@ -64,6 +68,9 @@ vim.lsp.config('lua_ls', {
 
 require('fidget').setup()
 
+-- Load telescope
+require('telescope').setup { }
+
 -- 5. Keybinds
 ---- Keybinds to make split navigation easier.
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
@@ -97,3 +104,17 @@ vim.keymap.set('n', '<C-l>', 'zz')
 
 -- When highlighting search, clear by pressing <Esc> in normal mode
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+
+-- Keybindings for Telescope
+local builtin = require 'telescope.builtin'
+vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
+vim.keymap.set('n', '<C-p>', builtin.git_files, {})
+vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = 'Find recently opened files' })
+vim.keymap.set('n', '<leader>,', require('telescope.builtin').buffers, { desc = 'Find existing buffers' })
+vim.keymap.set('n', '<leader>ps', function()
+  builtin.live_grep {}
+end)
+vim.keymap.set('n', '<leader>s', function()
+  local opts = { winblend = 10, previewer = true }
+  builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown(opts))
+end, { desc = 'Fuzzily search in current buffer' })
