@@ -10,12 +10,14 @@ vim.pack.add {
 	{ src = 'https://github.com/j-hui/fidget.nvim' },
 	-- Nice colortheme
 	{ src = 'https://github.com/rose-pine/neovim' },
+	-- lua stdlib2
+	{ src = 'https://github.com/nvim-lua/plenary.nvim' },
 	-- Find, Filter, Preview, Pick.
-	{ src = 'https://github.com/nvim-telescope/telescope.nvim' },
-		-- Telescope dependencies
-		{ src = 'https://github.com/nvim-lua/plenary.nvim' },
+	{ src = 'https://github.com/nvim-telescope/telescope.nvim' }, -- depends on plenary.nvim
 	-- Rust LSP
 	{ src = 'https://github.com/mrcjkb/rustaceanvim' },
+	-- Highlight TODO-esque comments
+	{ src = 'https://github.com/folke/todo-comments.nvim' }, -- depends on plenary.nvim
 }
 
 
@@ -69,6 +71,21 @@ vim.lsp.config('lua_ls', {
 })
 
 require('fidget').setup()
+require("todo-comments").setup {
+	opts = {
+		keywords = {
+			SAFETY = {
+				icon = '☢',
+				color = 'warning',
+				alt = { 'SOUNDNESS', 'UNSAFE', 'UNSOUND' },
+			},
+			INVARIANT = {
+				icon = '🦑',
+				color = 'hint',
+			},
+		},
+	}
+}
 
 -- Load telescope
 require('telescope').setup { }
