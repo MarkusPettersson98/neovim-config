@@ -20,6 +20,8 @@ vim.pack.add({
 	{ src = "https://github.com/folke/todo-comments.nvim" }, -- depends on plenary.nvim
 	-- Formatting
 	{ src = "https://github.com/stevearc/conform.nvim" },
+	-- Completion
+	{ src = "https://github.com/Saghen/blink.cmp", version = "v1.7.0" }, -- git tag v1.7.0
 })
 
 -- 1. Remap keys
@@ -69,6 +71,8 @@ vim.lsp.config("lua_ls", {
 		},
 	},
 })
+
+require("blink.cmp").setup({})
 
 require("conform").setup({
 	formatters_by_ft = {
