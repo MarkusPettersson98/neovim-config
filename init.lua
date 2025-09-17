@@ -80,3 +80,20 @@ vim.keymap.set('n', '<leader>wh', '<C-w>h', { desc = 'Split window vertically' }
 vim.keymap.set('n', '<leader>wl', '<C-w>l', { desc = 'Split window horizontally' }) -- move to window right of current window
 vim.keymap.set('n', '<leader>wj', '<C-w>j', { desc = 'Make splits equal size' }) -- move to window below the current window
 vim.keymap.set('n', '<leader>wk', '<C-w>k', { desc = 'Close current split' }) -- move to window above the current window
+
+-- Open file explorer in Normal mode
+vim.keymap.set('n', '<leader>.', vim.cmd.Ex)
+
+-- delete single character without copying into register
+vim.keymap.set('n', 'x', '"_x')
+
+-- Override join-by-'J' to force cursor to remain in place
+vim.keymap.set('n', 'J', 'mzJ`z')
+
+-- Center window on current line
+-- Note: It should be possible to replicate Emacs' `recenter-top-bottom` function
+-- by cycling through `zz`->`zt`->`zb`->`zz`->.. on repeated keypresses.
+vim.keymap.set('n', '<C-l>', 'zz')
+
+-- When highlighting search, clear by pressing <Esc> in normal mode
+vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
