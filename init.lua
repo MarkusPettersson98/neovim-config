@@ -199,6 +199,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- Rename the variable under your cursor
 		--  Most Language Servers support renaming across files, etc.
 		vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { buffer = bufnr, desc = "[C]ode [R]ename" })
+
+		vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "[C]ode [A]ction" })
 	end,
 })
 
