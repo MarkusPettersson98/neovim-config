@@ -149,6 +149,55 @@ vim.keymap.set("n", "<leader>s", function()
 	builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown(opts))
 end, { desc = "Fuzzily search in current buffer" })
 
+-- Coding keybidns / LSP keybinds
+vim.api.nvim_create_autocmd("LspAttach", {
+	group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
+	callback = function(event)
+		local bufnr = event.buf
+		-- Enable inlay hints by default.
+		vim.lsp.inlay_hint.enable(true)
+		-- Jump to the definition of the word under your cursor.
+		--  This is where a variable was first declared, or where a function is defined, etc.
+		--  To jump back, press <C-t>.
+		vim.keymap.set(
+			"n",
+			"<leader>cd",
+			require("telescope.builtin").lsp_definitions,
+			{ buffer = bufnr, desc = "[C]ode [D]efinition" }
+		)
+
+		-- Find references for the word under your cursor.
+		vim.keymap.set(
+			"n",
+			"<leader>cD",
+			require("telescope.builtin").lsp_references,
+			{ buffer = bufnr, desc = "[C]ode References" }
+		)
+
+		-- Fuzzy find all the symbols in your current document.
+		--  Symbols are things like variables, functions, types, etc.
+		vim.keymap.set(
+			"n",
+			"<leader>cs",
+			require("telescope.builtin").lsp_document_symbols,
+			{ buffer = bufnr, desc = "Document [C]ode [S]ymbols" }
+		)
+
+		-- Fuzzy find all the symbols in your current workspace
+		--  Similar to document symbols, except searches over your whole project.
+		vim.keymap.set(
+			"n",
+			"<leader>cS",
+			require("telescope.builtin").lsp_dynamic_workspace_symbols,
+			{ buffer = bufnr, desc = "Document Workspace [C]ode [S]ymbols" }
+		)
+
+		-- Rename the variable under your cursor
+		--  Most Language Servers support renaming across files, etc.
+		vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { buffer = bufnr, desc = "[C]ode [R]ename" })
+	end,
+})
+
 -- TODO: Scope this ..
 local set_rust_target = function(target)
 	local fidget = require("fidget")
