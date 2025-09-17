@@ -200,7 +200,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		--  Most Language Servers support renaming across files, etc.
 		vim.keymap.set("n", "<leader>cr", vim.lsp.buf.rename, { buffer = bufnr, desc = "[C]ode [R]ename" })
 
+		-- Execute a code action, usually your cursor needs to be on top of an error
+		-- or a suggestion from your LSP for this to activate.
 		vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, { buffer = bufnr, desc = "[C]ode [A]ction" })
+
+		-- Show errors in the current project
+		vim.keymap.set(
+			"n",
+			"<leader>ce",
+			require("telescope.builtin").diagnostics,
+			{ buffer = bufnr, desc = "[C]ode [E]rrors" }
+		)
 	end,
 })
 
