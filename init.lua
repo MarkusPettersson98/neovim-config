@@ -1,65 +1,63 @@
 -- 0. no-bloat neovim config for everyday dev work.
-vim.pack.add {
+vim.pack.add({
 	-- Configure LSPs
-	{ src = 'https://github.com/neovim/nvim-lspconfig' },
+	{ src = "https://github.com/neovim/nvim-lspconfig" },
 	-- Install LSPs, linters, formatters
-	{ src = 'https://github.com/mason-org/mason.nvim' },
-	{ src = 'https://github.com/mason-org/mason-lspconfig.nvim' },
-	{ src = 'https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim' },
+	{ src = "https://github.com/mason-org/mason.nvim" },
+	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
+	{ src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim" },
 	-- Nice status update
-	{ src = 'https://github.com/j-hui/fidget.nvim' },
+	{ src = "https://github.com/j-hui/fidget.nvim" },
 	-- Nice colortheme
-	{ src = 'https://github.com/rose-pine/neovim' },
+	{ src = "https://github.com/rose-pine/neovim" },
 	-- lua stdlib2
-	{ src = 'https://github.com/nvim-lua/plenary.nvim' },
+	{ src = "https://github.com/nvim-lua/plenary.nvim" },
 	-- Find, Filter, Preview, Pick.
-	{ src = 'https://github.com/nvim-telescope/telescope.nvim' }, -- depends on plenary.nvim
+	{ src = "https://github.com/nvim-telescope/telescope.nvim" }, -- depends on plenary.nvim
 	-- Rust LSP
-	{ src = 'https://github.com/mrcjkb/rustaceanvim' },
+	{ src = "https://github.com/mrcjkb/rustaceanvim" },
 	-- Highlight TODO-esque comments
-	{ src = 'https://github.com/folke/todo-comments.nvim' }, -- depends on plenary.nvim
+	{ src = "https://github.com/folke/todo-comments.nvim" }, -- depends on plenary.nvim
 	-- Formatting
-	{ src = 'https://github.com/stevearc/conform.nvim' },
-}
-
+	{ src = "https://github.com/stevearc/conform.nvim" },
+})
 
 -- 1. Remap keys
 -- Set <space> as the leader key
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 -- 2. Set vim options
 -- Show numbers
 vim.o.number = true
 vim.o.relativenumber = true
 
-
 -- 3. Set colorscheme
 -- Configure options before setting colorscheme.
-vim.cmd.colorscheme "rose-pine" -- default
+vim.cmd.colorscheme("rose-pine") -- default
 -- vim.cmd.colorscheme "rose-pine-moon" -- darker
 -- vim.cmd.colorscheme "rose-pine-dawn" -- light theme
 
 -- 4. Load plugins
-require('mason').setup()
-require('mason-lspconfig').setup()
-require('mason-tool-installer').setup({
+require("mason").setup()
+require("mason-lspconfig").setup()
+require("mason-tool-installer").setup({
 	ensure_installed = {
 		"lua_ls",
 		"stylua",
-	}
+	},
 })
 
-vim.lsp.config('lua_ls', {
+vim.lsp.config("lua_ls", {
 	settings = {
 		Lua = {
 			runtime = {
-				version = 'LuaJIT',
+				version = "LuaJIT",
 			},
 			diagnostics = {
 				globals = {
-					'vim',
-					'require'
+					"vim",
+					"require",
 				},
 			},
 			workspace = {
@@ -73,124 +71,122 @@ vim.lsp.config('lua_ls', {
 })
 
 require("conform").setup({
-  formatters_by_ft = {
-    lua = { "stylua" },
-    rust = { "rustfmt", lsp_format = "fallback" },
-  },
-  format_on_save = {
-    -- These options will be passed to conform.format()
-    timeout_ms = 500,
-    lsp_format = "fallback",
-  },
+	formatters_by_ft = {
+		lua = { "stylua" },
+	},
+	format_on_save = {
+		-- These options will be passed to conform.format()
+		timeout_ms = 500,
+		lsp_format = "fallback",
+	},
 })
 
-require('fidget').setup()
-require("todo-comments").setup {
+require("fidget").setup()
+require("todo-comments").setup({
 	opts = {
 		keywords = {
 			SAFETY = {
-				icon = '☢',
-				color = 'warning',
-				alt = { 'SOUNDNESS', 'UNSAFE', 'UNSOUND' },
+				icon = "☢",
+				color = "warning",
+				alt = { "SOUNDNESS", "UNSAFE", "UNSOUND" },
 			},
 			INVARIANT = {
-				icon = '🦑',
-				color = 'hint',
+				icon = "🦑",
+				color = "hint",
 			},
 		},
-	}
-}
+	},
+})
 
 -- Load telescope
-require('telescope').setup { }
+require("telescope").setup({})
 
 -- 5. Keybinds
 ---- Keybinds to make split navigation easier.
-vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
-vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
-vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
-vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+vim.keymap.set("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
-vim.keymap.set('n', '<leader>wv', '<C-w>v', { desc = 'Split window vertically' }) -- split window vertically
-vim.keymap.set('n', '<leader>ws', '<C-w>s', { desc = 'Split window horizontally' }) -- split window horizontally
-vim.keymap.set('n', '<leader>we', '<C-w>=', { desc = 'Make splits equal size' }) -- make split windows equal width & height
-vim.keymap.set('n', '<leader>wc', '<cmd>close<CR>', { desc = 'Close current split' }) -- close current split window
+vim.keymap.set("n", "<leader>wv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
+vim.keymap.set("n", "<leader>ws", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
+vim.keymap.set("n", "<leader>we", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
+vim.keymap.set("n", "<leader>wc", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
 
-vim.keymap.set('n', '<leader>wh', '<C-w>h', { desc = 'Split window vertically' }) -- move to window left of current window
-vim.keymap.set('n', '<leader>wl', '<C-w>l', { desc = 'Split window horizontally' }) -- move to window right of current window
-vim.keymap.set('n', '<leader>wj', '<C-w>j', { desc = 'Make splits equal size' }) -- move to window below the current window
-vim.keymap.set('n', '<leader>wk', '<C-w>k', { desc = 'Close current split' }) -- move to window above the current window
+vim.keymap.set("n", "<leader>wh", "<C-w>h", { desc = "Split window vertically" }) -- move to window left of current window
+vim.keymap.set("n", "<leader>wl", "<C-w>l", { desc = "Split window horizontally" }) -- move to window right of current window
+vim.keymap.set("n", "<leader>wj", "<C-w>j", { desc = "Make splits equal size" }) -- move to window below the current window
+vim.keymap.set("n", "<leader>wk", "<C-w>k", { desc = "Close current split" }) -- move to window above the current window
 
 -- Open file explorer in Normal mode
-vim.keymap.set('n', '<leader>.', vim.cmd.Ex)
+vim.keymap.set("n", "<leader>.", vim.cmd.Ex)
 
 -- delete single character without copying into register
-vim.keymap.set('n', 'x', '"_x')
+vim.keymap.set("n", "x", '"_x')
 
 -- Override join-by-'J' to force cursor to remain in place
-vim.keymap.set('n', 'J', 'mzJ`z')
+vim.keymap.set("n", "J", "mzJ`z")
 
 -- Center window on current line
 -- Note: It should be possible to replicate Emacs' `recenter-top-bottom` function
 -- by cycling through `zz`->`zt`->`zb`->`zz`->.. on repeated keypresses.
-vim.keymap.set('n', '<C-l>', 'zz')
+vim.keymap.set("n", "<C-l>", "zz")
 
 -- When highlighting search, clear by pressing <Esc> in normal mode
-vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 -- Keybindings for Telescope
-local builtin = require 'telescope.builtin'
-vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
-vim.keymap.set('n', '<C-p>', builtin.git_files, {})
-vim.keymap.set('n', '<leader>?', require('telescope.builtin').oldfiles, { desc = 'Find recently opened files' })
-vim.keymap.set('n', '<leader>,', require('telescope.builtin').buffers, { desc = 'Find existing buffers' })
-vim.keymap.set('n', '<leader>ps', function()
-  builtin.live_grep {}
+local builtin = require("telescope.builtin")
+vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
+vim.keymap.set("n", "<C-p>", builtin.git_files, {})
+vim.keymap.set("n", "<leader>?", require("telescope.builtin").oldfiles, { desc = "Find recently opened files" })
+vim.keymap.set("n", "<leader>,", require("telescope.builtin").buffers, { desc = "Find existing buffers" })
+vim.keymap.set("n", "<leader>ps", function()
+	builtin.live_grep({})
 end)
-vim.keymap.set('n', '<leader>s', function()
-  local opts = { winblend = 10, previewer = true }
-  builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown(opts))
-end, { desc = 'Fuzzily search in current buffer' })
-
+vim.keymap.set("n", "<leader>s", function()
+	local opts = { winblend = 10, previewer = true }
+	builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown(opts))
+end, { desc = "Fuzzily search in current buffer" })
 
 -- TODO: Scope this ..
 local set_rust_target = function(target)
-  local fidget = require 'fidget'
-  fidget.notify('Switching rust-analyzer target => ' .. target)
-  -- https://github.com/mrcjkb/rustaceanvim/blob/fee0aa094b0c9f93fffe5a385b3d5d2386c2b072/lua/rustaceanvim/lsp/init.lua#L305-L308
-  vim.cmd.RustAnalyzer { 'target', target }
+	local fidget = require("fidget")
+	fidget.notify("Switching rust-analyzer target => " .. target)
+	-- https://github.com/mrcjkb/rustaceanvim/blob/fee0aa094b0c9f93fffe5a385b3d5d2386c2b072/lua/rustaceanvim/lsp/init.lua#L305-L308
+	vim.cmd.RustAnalyzer({ "target", target })
 end
 
 -- a custom telescope picker for changing rust-analyzer target
 local pick_rust_target = function(opts)
-  opts = opts or {}
-  require('telescope.pickers')
-    .new(opts, {
-      prompt_title = 'rustup target list --installed',
-      finder = require('telescope.finders').new_oneshot_job({ 'rustup', 'target', 'list', '--installed' }, opts),
-      sorter = require('telescope.config').values.generic_sorter(opts),
-      attach_mappings = function(prompt_bufnr, map)
-        local actions = require 'telescope.actions'
-        actions.select_default:replace(function()
-          actions.close(prompt_bufnr)
-          local selection = require('telescope.actions.state').get_selected_entry()
-          set_rust_target(selection[1])
-        end)
-        return true
-      end,
-    })
-    :find()
+	opts = opts or {}
+	require("telescope.pickers")
+		.new(opts, {
+			prompt_title = "rustup target list --installed",
+			finder = require("telescope.finders").new_oneshot_job({ "rustup", "target", "list", "--installed" }, opts),
+			sorter = require("telescope.config").values.generic_sorter(opts),
+			attach_mappings = function(prompt_bufnr, map)
+				local actions = require("telescope.actions")
+				actions.select_default:replace(function()
+					actions.close(prompt_bufnr)
+					local selection = require("telescope.actions.state").get_selected_entry()
+					set_rust_target(selection[1])
+				end)
+				return true
+			end,
+		})
+		:find()
 end
 
 -- Pick a rust target triple
-vim.keymap.set('n', '<leader>ctp', pick_rust_target, { desc = 'Pick rust-analyzer target' })
+vim.keymap.set("n", "<leader>ctp", pick_rust_target, { desc = "Pick rust-analyzer target" })
 -- Add a keybinding for quickly switching rust-analyser to use
 -- the specified target triple.
 local function add_rustc_target_map(keybinding, target)
-  vim.keymap.set('n', ('<leader>' .. keybinding), function()
-    set_rust_target(target)
-  end, { desc = target })
+	vim.keymap.set("n", ("<leader>" .. keybinding), function()
+		set_rust_target(target)
+	end, { desc = target })
 end
-add_rustc_target_map('cta', 'aarch64-linux-android')
-add_rustc_target_map('ctl', 'x86_64-unknown-linux-gnu')
-add_rustc_target_map('ctw', 'x86_64-pc-windows-gnu')
+add_rustc_target_map("cta", "aarch64-linux-android")
+add_rustc_target_map("ctl", "x86_64-unknown-linux-gnu")
+add_rustc_target_map("ctw", "x86_64-pc-windows-gnu")
