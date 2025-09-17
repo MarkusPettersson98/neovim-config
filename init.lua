@@ -63,3 +63,20 @@ vim.lsp.config('lua_ls', {
 })
 
 require('fidget').setup()
+
+-- 5. Keybinds
+---- Keybinds to make split navigation easier.
+vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
+vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
+vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
+vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
+
+vim.keymap.set('n', '<leader>wv', '<C-w>v', { desc = 'Split window vertically' }) -- split window vertically
+vim.keymap.set('n', '<leader>ws', '<C-w>s', { desc = 'Split window horizontally' }) -- split window horizontally
+vim.keymap.set('n', '<leader>we', '<C-w>=', { desc = 'Make splits equal size' }) -- make split windows equal width & height
+vim.keymap.set('n', '<leader>wc', '<cmd>close<CR>', { desc = 'Close current split' }) -- close current split window
+
+vim.keymap.set('n', '<leader>wh', '<C-w>h', { desc = 'Split window vertically' }) -- move to window left of current window
+vim.keymap.set('n', '<leader>wl', '<C-w>l', { desc = 'Split window horizontally' }) -- move to window right of current window
+vim.keymap.set('n', '<leader>wj', '<C-w>j', { desc = 'Make splits equal size' }) -- move to window below the current window
+vim.keymap.set('n', '<leader>wk', '<C-w>k', { desc = 'Close current split' }) -- move to window above the current window
