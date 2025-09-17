@@ -120,3 +120,46 @@ vim.keymap.set('n', '<leader>s', function()
   local opts = { winblend = 10, previewer = true }
   builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown(opts))
 end, { desc = 'Fuzzily search in current buffer' })
+
+
+-- TODO: Scope this ..
+local set_rust_target = function(target)
+  local fidget = require 'fidget'
+  fidget.notify('Switching rust-analyzer target => ' .. target)
+  -- https://github.com/mrcjkb/rustaceanvim/blob/fee0aa094b0c9f93fffe5a385b3d5d2386c2b072/lua/rustaceanvim/lsp/init.lua#L305-L308
+  vim.cmd.RustAnalyzer { 'target', target }
+end
+
+-- a custom telescope picker for changing rust-analyzer target
+local pick_rust_target = function(opts)
+  opts = opts or {}
+  require('telescope.pickers')
+    .new(opts, {
+      prompt_title = 'rustup target list --installed',
+      finder = require('telescope.finders').new_oneshot_job({ 'rustup', 'target', 'list', '--installed' }, opts),
+      sorter = require('telescope.config').values.generic_sorter(opts),
+      attach_mappings = function(prompt_bufnr, map)
+        local actions = require 'telescope.actions'
+        actions.select_default:replace(function()
+          actions.close(prompt_bufnr)
+          local selection = require('telescope.actions.state').get_selected_entry()
+          set_rust_target(selection[1])
+        end)
+        return true
+      end,
+    })
+    :find()
+end
+
+-- Pick a rust target triple
+vim.keymap.set('n', '<leader>ctp', pick_rust_target, { desc = 'Pick rust-analyzer target' })
+-- Add a keybinding for quickly switching rust-analyser to use
+-- the specified target triple.
+local function add_rustc_target_map(keybinding, target)
+  vim.keymap.set('n', ('<leader>' .. keybinding), function()
+    set_rust_target(target)
+  end, { desc = target })
+end
+add_rustc_target_map('cta', 'aarch64-linux-android')
+add_rustc_target_map('ctl', 'x86_64-unknown-linux-gnu')
+add_rustc_target_map('ctw', 'x86_64-pc-windows-gnu')
