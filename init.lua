@@ -137,6 +137,12 @@ vim.keymap.set("n", "<leader>wl", "<C-w>l", { desc = "Split window horizontally"
 vim.keymap.set("n", "<leader>wj", "<C-w>j", { desc = "Make splits equal size" }) -- move to window below the current window
 vim.keymap.set("n", "<leader>wk", "<C-w>k", { desc = "Close current split" }) -- move to window above the current window
 
+-- Git
+vim.keymap.set("n", "<leader>gS", ":Git status<enter>", { desc = "status" })
+vim.keymap.set("n", "<leader>gC", ":Git commit<enter>", { desc = "commit" })
+vim.keymap.set("n", "<leader>gl", ":Git log<enter>", { desc = "log" })
+vim.keymap.set({ "n", "x" }, "<leader>gs", MiniGit.show_at_cursor, { desc = "Show at cursor" })
+
 -- Open file explorer in Normal mode
 vim.keymap.set("n", "<leader>.", vim.cmd.Ex)
 
