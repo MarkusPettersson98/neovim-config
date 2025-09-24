@@ -22,6 +22,9 @@ vim.pack.add({
 	{ src = "https://github.com/stevearc/conform.nvim" },
 	-- Completion
 	{ src = "https://github.com/Saghen/blink.cmp", version = "v1.7.0" }, -- git tag v1.7.0
+	-- Git integration
+	"https://github.com/nvim-mini/mini-git",
+	"https://github.com/nvim-mini/mini.diff",
 })
 
 -- 1. Remap keys
@@ -101,6 +104,10 @@ require("todo-comments").setup({
 		},
 	},
 })
+
+-- Load mini plugins
+require("mini.git").setup()
+require("mini.diff").setup()
 
 -- Load telescope
 require("telescope").setup({})
