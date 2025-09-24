@@ -110,7 +110,12 @@ require("todo-comments").setup({
 
 -- Load mini plugins
 require("mini.git").setup()
-require("mini.diff").setup()
+require("mini.diff").setup({
+	view = {
+		style = "sign",
+		signs = { add = "+", change = "~", delete = "-" },
+	},
+})
 
 -- Load telescope
 require("telescope").setup({})
