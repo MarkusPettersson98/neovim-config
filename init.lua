@@ -25,6 +25,8 @@ vim.pack.add({
 	-- Git integration
 	"https://github.com/nvim-mini/mini-git",
 	"https://github.com/nvim-mini/mini.diff",
+	-- which key
+	"https://github.com/folke/which-key.nvim",
 })
 
 -- 1. Remap keys
@@ -44,6 +46,7 @@ vim.cmd.colorscheme("rose-pine") -- default
 -- vim.cmd.colorscheme "rose-pine-dawn" -- light theme
 
 -- 4. Load plugins
+require("which-key").setup({})
 require("mason").setup()
 require("mason-lspconfig").setup()
 require("mason-tool-installer").setup({
