@@ -39,6 +39,11 @@ vim.g.maplocalleader = " "
 vim.o.number = true
 vim.o.relativenumber = true
 
+-- Sync clipboard between OS and Neovim.
+vim.schedule(function()
+	vim.o.clipboard = "unnamedplus"
+end)
+
 -- 3. Set colorscheme
 -- Configure options before setting colorscheme.
 vim.cmd.colorscheme("rose-pine") -- default
