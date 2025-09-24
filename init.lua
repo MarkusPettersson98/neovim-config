@@ -91,7 +91,7 @@ require("conform").setup({
 	},
 })
 
-require("fidget").setup()
+require("fidget").setup({})
 require("todo-comments").setup({
 	opts = {
 		keywords = {
@@ -240,7 +240,7 @@ local pick_rust_target = function(opts)
 			prompt_title = "rustup target list --installed",
 			finder = require("telescope.finders").new_oneshot_job({ "rustup", "target", "list", "--installed" }, opts),
 			sorter = require("telescope.config").values.generic_sorter(opts),
-			attach_mappings = function(prompt_bufnr, map)
+			attach_mappings = function(prompt_bufnr, _)
 				local actions = require("telescope.actions")
 				actions.select_default:replace(function()
 					actions.close(prompt_bufnr)
