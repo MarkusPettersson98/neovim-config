@@ -27,6 +27,8 @@ vim.pack.add({
 	"https://github.com/nvim-mini/mini.diff",
 	-- which key
 	"https://github.com/folke/which-key.nvim",
+	-- Auto-pairing delimiters
+	"https://github.com/m4xshen/autoclose.nvim",
 })
 
 -- 1. Remap keys
@@ -84,6 +86,12 @@ vim.lsp.config("lua_ls", {
 })
 
 require("blink.cmp").setup({})
+require("autoclose").setup({
+	keys = {
+		-- add custom symbols to auto-match
+		-- ["$"] = { escape = true, close = true, pair = "$$", disabled_filetypes = {} },
+	},
+})
 
 require("conform").setup({
 	formatters_by_ft = {
