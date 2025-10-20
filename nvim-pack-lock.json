@@ -1,0 +1,65 @@
+{
+  "plugins": {
+    "autoclose.nvim": {
+      "version": "'3f86702b54a861a17d7994b2e32a7c648cb12fb1'"
+    },
+    "blink.cmp": {
+      "version": "'v1.7.0'"
+    },
+    "conform.nvim": {
+      "rev": "3543d00",
+      "version": "'v9.1.0'"
+    },
+    "fidget.nvim": {
+      "rev": "b61e8af",
+      "version": "'v1.6.1'"
+    },
+    "mason-lspconfig.nvim": {
+      "rev": "f2fa604",
+      "version": "'v2.1.0'"
+    },
+    "mason-tool-installer.nvim": {
+      "version": "'517ef5994ef9d6b738322664d5fdd948f0fdeb46'"
+    },
+    "mason.nvim": {
+      "rev": "ad7146a",
+      "version": "'v2.1.0'"
+    },
+    "mini-git": {
+      "rev": "a0ddc63",
+      "version": "'v0.16.0'"
+    },
+    "mini.diff": {
+      "rev": "ec8a5ae",
+      "version": "'v0.16.0'"
+    },
+    "neovim": {
+      "rev": "f01eac6",
+      "version": "'v3.0.2'"
+    },
+    "nvim-lspconfig": {
+      "rev": "5bfcc89",
+      "version": "'v2.5.0'"
+    },
+    "plenary.nvim": {
+      "rev": "5001291",
+      "version": "'v0.1.4'"
+    },
+    "rustaceanvim": {
+      "rev": "1250440",
+      "version": "'v6.9.2'"
+    },
+    "telescope.nvim": {
+      "rev": "a0bbec2",
+      "version": "'0.1.8'"
+    },
+    "todo-comments.nvim": {
+      "rev": "ae0a2af",
+      "version": "'v1.4.0'"
+    },
+    "which-key.nvim": {
+      "rev": "fcbf4ee",
+      "version": "'v3.17.0'"
+    }
+  }
+}

@@ -1,34 +1,37 @@
 -- 0. no-bloat neovim config for everyday dev work.
 vim.pack.add({
 	-- Configure LSPs
-	{ src = "https://github.com/neovim/nvim-lspconfig" },
+	{ src = "https://github.com/neovim/nvim-lspconfig", version = "v2.5.0" },
 	-- Install LSPs, linters, formatters
-	{ src = "https://github.com/mason-org/mason.nvim" },
-	{ src = "https://github.com/mason-org/mason-lspconfig.nvim" },
-	{ src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim" },
+	{ src = "https://github.com/mason-org/mason.nvim", version = "v2.1.0" },
+	{ src = "https://github.com/mason-org/mason-lspconfig.nvim", version = "v2.1.0" },
+	{
+		src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim",
+		version = "517ef5994ef9d6b738322664d5fdd948f0fdeb46",
+	},
 	-- Nice status update
-	{ src = "https://github.com/j-hui/fidget.nvim" },
+	{ src = "https://github.com/j-hui/fidget.nvim", version = "v1.6.1" },
 	-- Nice colortheme
-	{ src = "https://github.com/rose-pine/neovim" },
+	{ src = "https://github.com/rose-pine/neovim", version = "v3.0.2" },
 	-- lua stdlib2
-	{ src = "https://github.com/nvim-lua/plenary.nvim" },
+	{ src = "https://github.com/nvim-lua/plenary.nvim", version = "v0.1.4" },
 	-- Find, Filter, Preview, Pick.
-	{ src = "https://github.com/nvim-telescope/telescope.nvim" }, -- depends on plenary.nvim
+	{ src = "https://github.com/nvim-telescope/telescope.nvim", version = "0.1.8" }, -- depends on plenary.nvim
 	-- Rust LSP
-	{ src = "https://github.com/mrcjkb/rustaceanvim" },
+	{ src = "https://github.com/mrcjkb/rustaceanvim", version = "v6.9.2" },
 	-- Highlight TODO-esque comments
-	{ src = "https://github.com/folke/todo-comments.nvim" }, -- depends on plenary.nvim
+	{ src = "https://github.com/folke/todo-comments.nvim", version = "v1.4.0" }, -- depends on plenary.nvim
 	-- Formatting
-	{ src = "https://github.com/stevearc/conform.nvim" },
+	{ src = "https://github.com/stevearc/conform.nvim", version = "v9.1.0" },
 	-- Completion
 	{ src = "https://github.com/Saghen/blink.cmp", version = "v1.7.0" }, -- git tag v1.7.0
 	-- Git integration
-	"https://github.com/nvim-mini/mini-git",
-	"https://github.com/nvim-mini/mini.diff",
+	{ src = "https://github.com/nvim-mini/mini-git", version = "v0.16.0" },
+	{ src = "https://github.com/nvim-mini/mini.diff", version = "v0.16.0" },
 	-- which key
-	"https://github.com/folke/which-key.nvim",
+	{ src = "https://github.com/folke/which-key.nvim", version = "v3.17.0" },
 	-- Auto-pairing delimiters
-	"https://github.com/m4xshen/autoclose.nvim",
+	{ src = "https://github.com/m4xshen/autoclose.nvim", version = "3f86702b54a861a17d7994b2e32a7c648cb12fb1" },
 })
 
 -- 1. Remap keys
