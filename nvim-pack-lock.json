@@ -57,6 +57,11 @@
       "rev": "ae0a2af",
       "version": "'v1.4.0'"
     },
+    "typescript-tools.nvim": {
+      "rev": "bf11d98",
+      "src": "https://github.com/pmizio/typescript-tools.nvim",
+      "version": "'bf11d98ad5736e1cbc1082ca9a03196d45c701f1'"
+    },
     "which-key.nvim": {
       "rev": "fcbf4ee",
       "version": "'v3.17.0'"
