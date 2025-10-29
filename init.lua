@@ -21,6 +21,14 @@ vim.pack.add({
 	{ src = "https://github.com/mrcjkb/rustaceanvim", version = "v6.9.6" },
 	-- Typescript LSP
 	{ src = "https://github.com/pmizio/typescript-tools.nvim", version = "bf11d98ad5736e1cbc1082ca9a03196d45c701f1" },
+	-- Test runner integration
+	-- Depends on: plenary, nvim-nio, FixCursorHold.nvim, nvim-treesitter
+	{ src = "https://github.com/nvim-neotest/neotest", version = "v5.13.1" },
+	{ src = "https://github.com/nvim-neotest/nvim-nio", version = "v1.10.1" },
+	{
+		src = "https://github.com/antoinemadec/FixCursorHold.nvim",
+		version = "1900f89dc17c603eec29960f57c00bd9ae696495",
+	},
 	-- Highlight TODO-esque comments
 	{ src = "https://github.com/folke/todo-comments.nvim", version = "v1.4.0" }, -- depends on plenary.nvim
 	-- Formatting
@@ -93,6 +101,12 @@ vim.lsp.config("lua_ls", {
 
 vim.lsp.config("typescript-tools", {
 	filetypes = { "typescript" },
+})
+
+require("neotest").setup({
+	adapters = {
+		require("rustaceanvim.neotest"),
+	},
 })
 
 require("blink.cmp").setup({})

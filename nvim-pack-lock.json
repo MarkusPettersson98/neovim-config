@@ -1,5 +1,10 @@
 {
   "plugins": {
+    "FixCursorHold.nvim": {
+      "rev": "1900f89",
+      "src": "https://github.com/antoinemadec/FixCursorHold.nvim",
+      "version": "'1900f89dc17c603eec29960f57c00bd9ae696495'"
+    },
     "autoclose.nvim": {
       "version": "'3f86702b54a861a17d7994b2e32a7c648cb12fb1'"
     },
@@ -33,6 +38,11 @@
       "rev": "ec8a5ae",
       "version": "'v0.16.0'"
     },
+    "neotest": {
+      "rev": "366175e",
+      "src": "https://github.com/nvim-neotest/neotest",
+      "version": "'v5.13.1'"
+    },
     "neovim": {
       "rev": "f01eac6",
       "version": "'v3.0.2'"
@@ -40,6 +50,11 @@
     "nvim-lspconfig": {
       "rev": "5bfcc89",
       "version": "'v2.5.0'"
+    },
+    "nvim-nio": {
+      "rev": "21f5324",
+      "src": "https://github.com/nvim-neotest/nvim-nio",
+      "version": "'v1.10.1'"
     },
     "plenary.nvim": {
       "rev": "5001291",
