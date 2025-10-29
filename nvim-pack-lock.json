@@ -56,6 +56,11 @@
       "src": "https://github.com/nvim-neotest/nvim-nio",
       "version": "'v1.10.1'"
     },
+    "nvim-web-devicons": {
+      "rev": "8dcb311",
+      "src": "https://github.com/nvim-tree/nvim-web-devicons",
+      "version": "'8dcb311b0c92d460fac00eac706abd43d94d68af'"
+    },
     "plenary.nvim": {
       "rev": "5001291",
       "version": "'v0.1.4'"
