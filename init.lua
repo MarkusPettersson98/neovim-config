@@ -42,6 +42,8 @@ vim.pack.add({
 	{ src = "https://github.com/folke/which-key.nvim", version = "v3.17.0" },
 	-- Auto-pairing delimiters
 	{ src = "https://github.com/m4xshen/autoclose.nvim", version = "3f86702b54a861a17d7994b2e32a7c648cb12fb1" },
+	-- Pretty icons
+	{ src = "https://github.com/nvim-tree/nvim-web-devicons", version = "8dcb311b0c92d460fac00eac706abd43d94d68af" },
 })
 
 -- 1. Remap keys
@@ -64,6 +66,7 @@ end)
 vim.cmd.colorscheme("rose-pine") -- default
 -- vim.cmd.colorscheme "rose-pine-moon" -- darker
 -- vim.cmd.colorscheme "rose-pine-dawn" -- light theme
+require("nvim-web-devicons").setup()
 
 -- 4. Load plugins
 require("which-key").setup({})
