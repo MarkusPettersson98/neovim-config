@@ -18,7 +18,7 @@ vim.pack.add({
 	-- Find, Filter, Preview, Pick.
 	{ src = "https://github.com/nvim-telescope/telescope.nvim", version = "0.1.8" }, -- depends on plenary.nvim
 	-- Rust LSP
-	{ src = "https://github.com/mrcjkb/rustaceanvim", version = "v6.9.2" },
+	{ src = "https://github.com/mrcjkb/rustaceanvim", version = "v6.9.6" },
 	-- Typescript LSP
 	{ src = "https://github.com/pmizio/typescript-tools.nvim", version = "bf11d98ad5736e1cbc1082ca9a03196d45c701f1" },
 	-- Highlight TODO-esque comments
