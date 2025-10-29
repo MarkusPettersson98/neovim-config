@@ -46,8 +46,8 @@
       "version": "'v0.1.4'"
     },
     "rustaceanvim": {
-      "rev": "1250440",
-      "version": "'v6.9.2'"
+      "rev": "be0d1d1",
+      "version": "'v6.9.6'"
     },
     "telescope.nvim": {
       "rev": "a0bbec2",
