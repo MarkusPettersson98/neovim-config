@@ -30,6 +30,11 @@
       "rev": "ad7146a",
       "version": "'v2.1.0'"
     },
+    "melange-nvim": {
+      "rev": "ce42f6b",
+      "src": "https://github.com/savq/melange-nvim",
+      "version": "'2025-07-10'"
+    },
     "mini-git": {
       "rev": "a0ddc63",
       "version": "'v0.16.0'"
