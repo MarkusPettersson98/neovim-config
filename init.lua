@@ -88,10 +88,12 @@ vim.lsp.config("lua_ls", {
 		},
 	},
 })
+vim.lsp.enable("lua_ls")
 
 vim.lsp.config("typescript-tools", {
 	filetypes = { "typescript" },
 })
+vim.lsp.enable("typescript-tools")
 
 require("neotest").setup({
 	adapters = {
