@@ -2,13 +2,6 @@
 vim.pack.add({
 	-- Configure LSPs
 	{ src = "https://github.com/neovim/nvim-lspconfig", version = "v2.5.0" },
-	-- Install LSPs, linters, formatters
-	{ src = "https://github.com/mason-org/mason.nvim", version = "v2.1.0" },
-	{ src = "https://github.com/mason-org/mason-lspconfig.nvim", version = "v2.1.0" },
-	{
-		src = "https://github.com/WhoIsSethDaniel/mason-tool-installer.nvim",
-		version = "517ef5994ef9d6b738322664d5fdd948f0fdeb46",
-	},
 	-- Nice status update
 	{ src = "https://github.com/j-hui/fidget.nvim", version = "v1.6.1" },
 	-- Nice colortheme
@@ -73,15 +66,6 @@ require("nvim-web-devicons").setup()
 
 -- 4. Load plugins
 require("which-key").setup({})
-require("mason").setup()
-require("mason-lspconfig").setup()
-require("mason-tool-installer").setup({
-	ensure_installed = {
-		"lua_ls",
-		"stylua",
-		"typescript-language-server",
-	},
-})
 
 vim.lsp.config("lua_ls", {
 	settings = {
