@@ -95,6 +95,11 @@ vim.lsp.config("typescript-tools", {
 })
 vim.lsp.enable("typescript-tools")
 
+vim.lsp.config("nixd", {
+	filetypes = { "nix" },
+})
+vim.lsp.enable("nixd")
+
 require("neotest").setup({
 	adapters = {
 		require("rustaceanvim.neotest"),
@@ -112,6 +117,7 @@ require("autoclose").setup({
 require("conform").setup({
 	formatters_by_ft = {
 		lua = { "stylua" },
+		nix = { "nixfmt" },
 	},
 	format_on_save = {
 		-- These options will be passed to conform.format()
