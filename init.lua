@@ -100,6 +100,11 @@ vim.lsp.config("nixd", {
 })
 vim.lsp.enable("nixd")
 
+vim.lsp.config("nil_ls", {
+	filetypes = { "nix" },
+})
+vim.lsp.enable("nil_ls")
+
 require("neotest").setup({
 	adapters = {
 		require("rustaceanvim.neotest"),
