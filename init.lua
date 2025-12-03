@@ -10,9 +10,9 @@ vim.pack.add({
 	-- lua stdlib2
 	{ src = "https://github.com/nvim-lua/plenary.nvim", version = "v0.1.4" },
 	-- Find, Filter, Preview, Pick.
-	{ src = "https://github.com/nvim-telescope/telescope.nvim", version = "0.1.8" }, -- depends on plenary.nvim
+	{ src = "https://github.com/nvim-telescope/telescope.nvim", version = "v0.2.0" }, -- depends on plenary.nvim
 	-- Rust LSP
-	{ src = "https://github.com/mrcjkb/rustaceanvim", version = "v6.9.6" },
+	{ src = "https://github.com/mrcjkb/rustaceanvim", version = "v7.0.6" },
 	-- Typescript LSP
 	{ src = "https://github.com/pmizio/typescript-tools.nvim", version = "bf11d98ad5736e1cbc1082ca9a03196d45c701f1" },
 	-- Test runner integration
@@ -28,7 +28,7 @@ vim.pack.add({
 	-- Formatting
 	{ src = "https://github.com/stevearc/conform.nvim", version = "v9.1.0" },
 	-- Completion
-	{ src = "https://github.com/Saghen/blink.cmp", version = "v1.7.0" }, -- git tag v1.7.0
+	{ src = "https://github.com/Saghen/blink.cmp", version = "v1.8.0" },
 	-- Git integration
 	{ src = "https://github.com/nvim-mini/mini-git", version = "v0.16.0" },
 	{ src = "https://github.com/nvim-mini/mini.diff", version = "v0.16.0" },
