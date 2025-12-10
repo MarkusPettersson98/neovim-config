@@ -101,9 +101,9 @@
       "version": "'v1.4.0'"
     },
     "typescript-tools.nvim": {
-      "rev": "bf11d98",
+      "rev": "c2f5910074103705661e9651aa841e0d7eea9932",
       "src": "https://github.com/pmizio/typescript-tools.nvim",
-      "version": "'bf11d98ad5736e1cbc1082ca9a03196d45c701f1'"
+      "version": "'c2f5910074103705661e9651aa841e0d7eea9932'"
     },
     "which-key.nvim": {
       "rev": "fcbf4ee",
