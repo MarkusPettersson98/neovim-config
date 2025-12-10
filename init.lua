@@ -14,7 +14,7 @@ vim.pack.add({
 	-- Rust LSP
 	{ src = "https://github.com/mrcjkb/rustaceanvim", version = "v7.0.6" },
 	-- Typescript LSP
-	{ src = "https://github.com/pmizio/typescript-tools.nvim", version = "bf11d98ad5736e1cbc1082ca9a03196d45c701f1" },
+	{ src = "https://github.com/pmizio/typescript-tools.nvim", version = "c2f5910074103705661e9651aa841e0d7eea9932" },
 	-- Test runner integration
 	-- Depends on: plenary, nvim-nio, FixCursorHold.nvim, nvim-treesitter
 	{ src = "https://github.com/nvim-neotest/neotest", version = "v5.13.1" },
