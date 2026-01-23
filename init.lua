@@ -96,6 +96,7 @@ vim.lsp.config("nil_ls", {
 	filetypes = { "nix" },
 })
 vim.lsp.enable("nil_ls")
+vim.lsp.enable("tombi")
 
 require("blink.cmp").setup({})
 require("autoclose").setup({
