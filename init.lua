@@ -17,6 +17,8 @@ vim.pack.add({
 	{ src = "https://github.com/pmizio/typescript-tools.nvim", version = "c2f5910074103705661e9651aa841e0d7eea9932" },
 	-- Highlight TODO-esque comments
 	{ src = "https://github.com/folke/todo-comments.nvim", version = "v1.4.0" }, -- depends on plenary.nvim
+	-- Search + replace
+	{ src = "https://github.com/MagicDuck/grug-far.nvim", version = "1.6.63" },
 	-- Formatting
 	{ src = "https://github.com/stevearc/conform.nvim", version = "v9.1.0" },
 	-- Completion
@@ -58,6 +60,7 @@ require("nvim-web-devicons").setup()
 
 -- 4. Load plugins
 require("which-key").setup({})
+require("grug-far").setup({})
 
 vim.lsp.config("lua_ls", {
 	settings = {
@@ -187,7 +190,7 @@ vim.keymap.set("n", "<C-l>", "zz")
 -- When highlighting search, clear by pressing <Esc> in normal mode
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
--- Keybindings for Telescope
+-- Search
 local builtin = require("telescope.builtin")
 vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
 vim.keymap.set("n", "<C-p>", builtin.git_files, {})
@@ -196,10 +199,13 @@ vim.keymap.set("n", "<leader>,", require("telescope.builtin").buffers, { desc = 
 vim.keymap.set("n", "<leader>ps", function()
 	builtin.live_grep({})
 end)
-vim.keymap.set("n", "<leader>s", function()
+vim.keymap.set("n", "<leader>sb", function()
 	local opts = { winblend = 10, previewer = true }
 	builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown(opts))
 end, { desc = "Fuzzily search in current buffer" })
+
+-- (Search and) Replace
+vim.keymap.set("n", "<leader>sr", function() require('grug-far').open({ visualSelectionUsage = 'auto-detect' }) end, { desc = "Search and replace in path" })
 
 -- Coding keybidns / LSP keybinds
 vim.api.nvim_create_autocmd("LspAttach", {

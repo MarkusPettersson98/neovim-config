@@ -20,6 +20,11 @@
       "src": "https://github.com/j-hui/fidget.nvim",
       "version": "'v1.6.1'"
     },
+    "grug-far.nvim": {
+      "rev": "dc4684e163971bb1f5bfb93fbd4bb3e892bf9b15",
+      "src": "https://github.com/MagicDuck/grug-far.nvim",
+      "version": "'1.6.63'"
+    },
     "mason-lspconfig.nvim": {
       "rev": "f2fa60409630ec2d24acf84494fb55e1d28d593c",
       "src": "https://github.com/mason-org/mason-lspconfig.nvim",
