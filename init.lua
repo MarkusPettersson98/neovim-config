@@ -160,15 +160,15 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
-vim.keymap.set("n", "<leader>wv", "<C-w>v", { desc = "Split window vertically" }) -- split window vertically
-vim.keymap.set("n", "<leader>ws", "<C-w>s", { desc = "Split window horizontally" }) -- split window horizontally
-vim.keymap.set("n", "<leader>we", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
+vim.keymap.set("n", "<leader>wv", "<C-w>v", { desc = "Split window vertically" })     -- split window vertically
+vim.keymap.set("n", "<leader>ws", "<C-w>s", { desc = "Split window horizontally" })   -- split window horizontally
+vim.keymap.set("n", "<leader>we", "<C-w>=", { desc = "Make splits equal size" })      -- make split windows equal width & height
 vim.keymap.set("n", "<leader>wc", "<cmd>close<CR>", { desc = "Close current split" }) -- close current split window
 
-vim.keymap.set("n", "<leader>wh", "<C-w>h", { desc = "Split window vertically" }) -- move to window left of current window
-vim.keymap.set("n", "<leader>wl", "<C-w>l", { desc = "Split window horizontally" }) -- move to window right of current window
-vim.keymap.set("n", "<leader>wj", "<C-w>j", { desc = "Make splits equal size" }) -- move to window below the current window
-vim.keymap.set("n", "<leader>wk", "<C-w>k", { desc = "Close current split" }) -- move to window above the current window
+vim.keymap.set("n", "<leader>wh", "<C-w>h", { desc = "Split window vertically" })     -- move to window left of current window
+vim.keymap.set("n", "<leader>wl", "<C-w>l", { desc = "Split window horizontally" })   -- move to window right of current window
+vim.keymap.set("n", "<leader>wj", "<C-w>j", { desc = "Make splits equal size" })      -- move to window below the current window
+vim.keymap.set("n", "<leader>wk", "<C-w>k", { desc = "Close current split" })         -- move to window above the current window
 
 -- Git
 vim.keymap.set("n", "<leader>gS", ":Git status<enter>", { desc = "status" })
@@ -208,7 +208,8 @@ vim.keymap.set("n", "<leader>sb", function()
 end, { desc = "Fuzzily search in current buffer" })
 
 -- (Search and) Replace
-vim.keymap.set("n", "<leader>sr", function() require('grug-far').open({ visualSelectionUsage = 'auto-detect' }) end, { desc = "Search and replace in path" })
+vim.keymap.set("n", "<leader>sr", function() require('grug-far').open({ visualSelectionUsage = 'auto-detect' }) end,
+	{ desc = "Search and replace in path" })
 
 -- Coding keybidns / LSP keybinds
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -283,21 +284,22 @@ end
 local pick_rust_target = function(opts)
 	opts = opts or {}
 	require("telescope.pickers")
-		.new(opts, {
-			prompt_title = "rustup target list --installed",
-			finder = require("telescope.finders").new_oneshot_job({ "rustup", "target", "list", "--installed" }, opts),
-			sorter = require("telescope.config").values.generic_sorter(opts),
-			attach_mappings = function(prompt_bufnr, _)
-				local actions = require("telescope.actions")
-				actions.select_default:replace(function()
-					actions.close(prompt_bufnr)
-					local selection = require("telescope.actions.state").get_selected_entry()
-					set_rust_target(selection[1])
-				end)
-				return true
-			end,
-		})
-		:find()
+	    .new(opts, {
+		    prompt_title = "rustup target list --installed",
+		    finder = require("telescope.finders").new_oneshot_job({ "rustup", "target", "list", "--installed" },
+			    opts),
+		    sorter = require("telescope.config").values.generic_sorter(opts),
+		    attach_mappings = function(prompt_bufnr, _)
+			    local actions = require("telescope.actions")
+			    actions.select_default:replace(function()
+				    actions.close(prompt_bufnr)
+				    local selection = require("telescope.actions.state").get_selected_entry()
+				    set_rust_target(selection[1])
+			    end)
+			    return true
+		    end,
+	    })
+	    :find()
 end
 
 -- Pick a rust target triple
