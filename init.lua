@@ -1,37 +1,39 @@
 -- 0. no-bloat neovim config for everyday dev work.
 vim.pack.add({
 	-- Configure LSPs
-	{ src = "https://github.com/neovim/nvim-lspconfig", version = "v2.5.0" },
+	{ src = "https://github.com/neovim/nvim-lspconfig",           version = "v2.5.0" },
+	-- Treesitter
+	{ src = "https://github.com/nvim-treesitter/nvim-treesitter", version = "c82bf96f0a773d85304feeb695e1e23b2207ac35" },
 	-- Nice status update
-	{ src = "https://github.com/j-hui/fidget.nvim", version = "v1.6.1" },
+	{ src = "https://github.com/j-hui/fidget.nvim",               version = "v1.6.1" },
 	-- Nice colortheme
-	{ src = "https://github.com/rose-pine/neovim", version = "v3.0.2" },
-	{ src = "https://github.com/savq/melange-nvim", version = "2025-07-10" },
+	{ src = "https://github.com/rose-pine/neovim",                version = "v3.0.2" },
+	{ src = "https://github.com/savq/melange-nvim",               version = "2025-07-10" },
 	-- lua stdlib2
-	{ src = "https://github.com/nvim-lua/plenary.nvim", version = "v0.1.4" },
+	{ src = "https://github.com/nvim-lua/plenary.nvim",           version = "v0.1.4" },
 	-- Find, Filter, Preview, Pick.
-	{ src = "https://github.com/nvim-telescope/telescope.nvim", version = "v0.2.0" }, -- depends on plenary.nvim
+	{ src = "https://github.com/nvim-telescope/telescope.nvim",   version = "v0.2.0" }, -- depends on plenary.nvim
 	-- Rust LSP
-	{ src = "https://github.com/mrcjkb/rustaceanvim", version = "v7.0.6" },
+	{ src = "https://github.com/mrcjkb/rustaceanvim",             version = "v7.0.6" },
 	-- Typescript LSP
-	{ src = "https://github.com/pmizio/typescript-tools.nvim", version = "c2f5910074103705661e9651aa841e0d7eea9932" },
+	{ src = "https://github.com/pmizio/typescript-tools.nvim",    version = "c2f5910074103705661e9651aa841e0d7eea9932" },
 	-- Highlight TODO-esque comments
-	{ src = "https://github.com/folke/todo-comments.nvim", version = "v1.4.0" }, -- depends on plenary.nvim
+	{ src = "https://github.com/folke/todo-comments.nvim",        version = "v1.4.0" }, -- depends on plenary.nvim
 	-- Search + replace
-	{ src = "https://github.com/MagicDuck/grug-far.nvim", version = "1.6.63" },
+	{ src = "https://github.com/MagicDuck/grug-far.nvim",         version = "1.6.63" },
 	-- Formatting
-	{ src = "https://github.com/stevearc/conform.nvim", version = "v9.1.0" },
+	{ src = "https://github.com/stevearc/conform.nvim",           version = "v9.1.0" },
 	-- Completion
-	{ src = "https://github.com/Saghen/blink.cmp", version = "v1.8.0" },
+	{ src = "https://github.com/Saghen/blink.cmp",                version = "v1.8.0" },
 	-- Git integration
-	{ src = "https://github.com/nvim-mini/mini-git", version = "v0.16.0" },
-	{ src = "https://github.com/nvim-mini/mini.diff", version = "v0.16.0" },
+	{ src = "https://github.com/nvim-mini/mini-git",              version = "v0.16.0" },
+	{ src = "https://github.com/nvim-mini/mini.diff",             version = "v0.16.0" },
 	-- which key
-	{ src = "https://github.com/folke/which-key.nvim", version = "v3.17.0" },
+	{ src = "https://github.com/folke/which-key.nvim",            version = "v3.17.0" },
 	-- Auto-pairing delimiters
-	{ src = "https://github.com/m4xshen/autoclose.nvim", version = "3f86702b54a861a17d7994b2e32a7c648cb12fb1" },
+	{ src = "https://github.com/m4xshen/autoclose.nvim",          version = "3f86702b54a861a17d7994b2e32a7c648cb12fb1" },
 	-- Pretty icons
-	{ src = "https://github.com/nvim-tree/nvim-web-devicons", version = "8dcb311b0c92d460fac00eac706abd43d94d68af" },
+	{ src = "https://github.com/nvim-tree/nvim-web-devicons",     version = "8dcb311b0c92d460fac00eac706abd43d94d68af" },
 })
 
 -- 1. Remap keys
@@ -100,6 +102,7 @@ vim.lsp.config("nil_ls", {
 })
 vim.lsp.enable("nil_ls")
 vim.lsp.enable("tombi")
+vim.lsp.enable("slint_lsp")
 
 require("blink.cmp").setup({})
 require("autoclose").setup({
