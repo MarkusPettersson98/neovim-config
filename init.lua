@@ -89,7 +89,7 @@ vim.lsp.enable("lua_ls")
 
 vim.lsp.enable("typescript-tools")
 vim.lsp.config("typescript-tools", {
-	filetypes = { "typescript" },
+	filetypes = { "typescript", "javascript", "json" },
 })
 
 vim.lsp.config("nixd", {
