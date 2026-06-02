@@ -17,6 +17,10 @@ vim.pack.add({
 	{ src = "https://github.com/mrcjkb/rustaceanvim",             version = "v7.0.6" },
 	-- Typescript LSP
 	{ src = "https://github.com/pmizio/typescript-tools.nvim",    version = "c2f5910074103705661e9651aa841e0d7eea9932" },
+	-- Test integration
+	{ src = "https://github.com/nvim-neotest/neotest",            version = "v5.18.0" },
+	{ src = "https://github.com/nvim-neotest/nvim-nio",           version = "v1.10.1" },
+	{ src = "https://github.com/nvim-neotest/neotest-plenary",    version = "3523adcf9ffaad1911960c5813b0136c1b63a2ec" },
 	-- Highlight TODO-esque comments
 	{ src = "https://github.com/folke/todo-comments.nvim",        version = "v1.4.0" }, -- depends on plenary.nvim
 	-- Search + replace
@@ -109,6 +113,13 @@ require("autoclose").setup({
 	keys = {
 		-- add custom symbols to auto-match
 		-- ["$"] = { escape = true, close = true, pair = "$$", disabled_filetypes = {} },
+	},
+})
+
+require("neotest").setup({
+	adapters = {
+		require("neotest-plenary"),
+		require('rustaceanvim.neotest'),
 	},
 })
 
@@ -269,6 +280,32 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			require("telescope.builtin").diagnostics,
 			{ buffer = bufnr, desc = "[C]ode [E]rrors" }
 		)
+
+		-- Neotest related mappings
+		vim.keymap.set(
+			"n",
+			"<leader>ctr",
+			require("neotest").run.run,
+			{ buffer = bufnr, desc = "Run test (closest to cursor)" }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>ctf",
+			function() require("neotest").run.run(vim.fn.expand("%")) end,
+			{ buffer = bufnr, desc = "Run tests in file" }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>cta",
+			function() require("neotest").run.run({ suite = true }) end,
+			{ buffer = bufnr, desc = "Run all tests" }
+		)
+		vim.keymap.set(
+			"n",
+			"<leader>cts",
+			require("neotest").run.stop,
+			{ buffer = bufnr, desc = "Stop test" }
+		)
 	end,
 })
 
@@ -311,6 +348,6 @@ local function add_rustc_target_map(keybinding, target)
 		set_rust_target(target)
 	end, { desc = target })
 end
-add_rustc_target_map("cta", "aarch64-linux-android")
-add_rustc_target_map("ctl", "x86_64-unknown-linux-gnu")
-add_rustc_target_map("ctw", "x86_64-pc-windows-gnu")
+add_rustc_target_map("cpa", "aarch64-linux-android")
+add_rustc_target_map("cpl", "x86_64-unknown-linux-gnu")
+add_rustc_target_map("cpw", "x86_64-pc-windows-gnu")
