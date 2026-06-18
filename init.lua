@@ -21,6 +21,10 @@ vim.pack.add({
 	{ src = "https://github.com/nvim-neotest/neotest",            version = "v5.18.0" },
 	{ src = "https://github.com/nvim-neotest/nvim-nio",           version = "v1.10.1" },
 	{ src = "https://github.com/nvim-neotest/neotest-plenary",    version = "3523adcf9ffaad1911960c5813b0136c1b63a2ec" },
+	-- Debugging
+	{ src = "https://github.com/mfussenegger/nvim-dap",           version = "531771530d4f82ad2d21e436e3cc052d68d7aebb" },
+	{ src = "https://github.com/theHamsta/nvim-dap-virtual-text", version = "fbdb48c2ed45f4a8293d0d483f7730d24467ccb6" },
+	{ src = "https://github.com/rcarriga/nvim-dap-ui",            version = "1a66cabaa4a4da0be107d5eda6d57242f0fe7e49" },
 	-- Highlight TODO-esque comments
 	{ src = "https://github.com/folke/todo-comments.nvim",        version = "v1.4.0" }, -- depends on plenary.nvim
 	-- Search + replace
@@ -306,6 +310,34 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			require("neotest").run.stop,
 			{ buffer = bufnr, desc = "Stop test" }
 		)
+
+		-- Debugging
+		local dap, dapui = require("dap"), require("dapui")
+		dap.listeners.before.attach.dapui_config = function()
+			dapui.setup()
+			require("nvim-dap-virtual-text").setup()
+			dapui.open()
+		end
+		dap.listeners.before.launch.dapui_config = function()
+			dapui.setup()
+			dapui.open()
+		end
+		dap.listeners.before.event_terminated.dapui_config = function()
+			dapui.close()
+		end
+		dap.listeners.before.event_exited.dapui_config = function()
+			dapui.close()
+		end
+
+		vim.keymap.set('n', '<F1>', function() dap.continue() end)
+		vim.keymap.set('n', '<F2>', function() dap.restart() end)
+		vim.keymap.set('n', '<F6>', function() dap.step_over() end)
+		vim.keymap.set('n', '<F7>', function() dap.step_into() end)
+		vim.keymap.set('n', '<F8>', function() dap.step_out() end)
+		vim.keymap.set('n', '<Leader>b', function() dap.toggle_breakpoint() end, { desc = "Toggle breakpoint" })
+		vim.keymap.set('n', '<Leader>dl', function() dap.run_last() end)
+		vim.keymap.set('n', '<Leader>df',
+			function() require("dapui").float_element('scopes', { enter = true }) end)
 	end,
 })
 
