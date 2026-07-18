@@ -55,6 +55,11 @@
       "src": "https://github.com/nvim-mini/mini.diff",
       "version": "'v0.16.0'"
     },
+    "modus-themes.nvim": {
+      "rev": "17a64464c27c1be605adca13dbe48f2f402fe107",
+      "src": "https://github.com/miikanissi/modus-themes.nvim",
+      "version": "'v1.4.3'"
+    },
     "neotest": {
       "rev": "ad991822b7076b1d940b33a9d6d0d30416d5df81",
       "src": "https://github.com/nvim-neotest/neotest",

@@ -8,6 +8,7 @@ vim.pack.add({
 	{ src = "https://github.com/j-hui/fidget.nvim",               version = "v1.6.1" },
 	-- Nice colortheme
 	{ src = "https://github.com/savq/melange-nvim",               version = "2025-07-10" },
+	{ src = "https://github.com/miikanissi/modus-themes.nvim",    version = "v1.4.3" },
 	-- lua stdlib2
 	{ src = "https://github.com/nvim-lua/plenary.nvim",           version = "v0.1.4" },
 	-- Find, Filter, Preview, Pick.
