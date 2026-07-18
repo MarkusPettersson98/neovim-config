@@ -62,10 +62,18 @@ end)
 -- 3. Set colorscheme
 -- Configure options before setting colorscheme.
 vim.cmd.colorscheme("melange") -- default
+-- Switch between dark and light theme.
+local function set_dark_mode()
+	vim.api.nvim_set_option_value("background", "dark", {})
+end
 
---vim.cmd.colorscheme("rose-pine") -- default
--- vim.cmd.colorscheme "rose-pine-moon" -- darker
--- vim.cmd.colorscheme "rose-pine-dawn" -- light theme
+local function set_light_mode()
+	vim.api.nvim_set_option_value("background", "light", {})
+end
+
+vim.keymap.set("n", "<leader>8", set_dark_mode, { desc = "Toggle dark mode" })
+vim.keymap.set("n", "<leader>9", set_light_mode, { desc = "Toggle light mode" })
+
 require("nvim-web-devicons").setup()
 
 -- 4. Load plugins
