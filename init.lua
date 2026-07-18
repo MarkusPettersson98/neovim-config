@@ -7,7 +7,6 @@ vim.pack.add({
 	-- Nice status update
 	{ src = "https://github.com/j-hui/fidget.nvim",               version = "v1.6.1" },
 	-- Nice colortheme
-	{ src = "https://github.com/rose-pine/neovim",                version = "v3.0.2" },
 	{ src = "https://github.com/savq/melange-nvim",               version = "2025-07-10" },
 	-- lua stdlib2
 	{ src = "https://github.com/nvim-lua/plenary.nvim",           version = "v0.1.4" },
