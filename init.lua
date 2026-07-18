@@ -61,7 +61,8 @@ end)
 
 -- 3. Set colorscheme
 -- Configure options before setting colorscheme.
-vim.cmd.colorscheme("melange") -- default
+vim.cmd.colorscheme("modus") -- default
+--vim.cmd.colorscheme("melange") -- default
 -- Switch between dark and light theme.
 local function set_dark_mode()
 	vim.api.nvim_set_option_value("background", "dark", {})
