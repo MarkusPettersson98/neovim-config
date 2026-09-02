@@ -46,14 +46,14 @@
       "version": "'2025-07-10'"
     },
     "mini-git": {
-      "rev": "a0ddc63",
+      "rev": "96db7676696e53add56726e9e80f92dff9f63d17",
       "src": "https://github.com/nvim-mini/mini-git",
-      "version": "'v0.16.0'"
+      "version": "'v0.18.0'"
     },
     "mini.diff": {
-      "rev": "ec8a5ae",
+      "rev": "0743d26bd858ebe32efcf5c86a91a422a000f273",
       "src": "https://github.com/nvim-mini/mini.diff",
-      "version": "'v0.16.0'"
+      "version": "'v0.18.0'"
     },
     "modus-themes.nvim": {
       "rev": "17a64464c27c1be605adca13dbe48f2f402fe107",

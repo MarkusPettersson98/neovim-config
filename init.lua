@@ -35,8 +35,8 @@ vim.pack.add({
 	-- Completion
 	{ src = "https://github.com/Saghen/blink.cmp",                version = "v1.8.0" },
 	-- Git integration
-	{ src = "https://github.com/nvim-mini/mini-git",              version = "v0.16.0" },
-	{ src = "https://github.com/nvim-mini/mini.diff",             version = "v0.16.0" },
+	{ src = "https://github.com/nvim-mini/mini-git",              version = "v0.18.0" },
+	{ src = "https://github.com/nvim-mini/mini.diff",             version = "v0.18.0" },
 	-- which key
 	{ src = "https://github.com/folke/which-key.nvim",            version = "v3.17.0" },
 	-- Auto-pairing delimiters
