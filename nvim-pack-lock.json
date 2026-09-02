@@ -116,9 +116,9 @@
       "version": "'v0.1.4'"
     },
     "rustaceanvim": {
-      "rev": "6c3785d6a230bec63f70c98bf8e2842bed924245",
+      "rev": "86b48f46b40fd406848acb06cd46cdaca95e943b",
       "src": "https://github.com/mrcjkb/rustaceanvim",
-      "version": "'v7.0.6'"
+      "version": "'v8.0.0'"
     },
     "telescope.nvim": {
       "rev": "e69b434b968a33815e2f02a5c7bd7b8dd4c7d4b2",
